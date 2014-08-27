@@ -63,4 +63,17 @@ public class App {
 				eventListType
 				);
 	}
+
+	public List<Event> getParkSpecialPermitsAfterDate(DateTime now) throws Exception {
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		for (Event evt : evts) {
+			if (evt.getDateTime().isAfter(now)) {
+				toDo.add(evt);
+			}
+		}
+
+		return toDo;
+	}
 }
