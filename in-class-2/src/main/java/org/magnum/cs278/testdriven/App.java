@@ -63,4 +63,19 @@ public class App {
 				eventListType
 				);
 	}
+
+	public List<Event> getEventsLargerThan(int i)  throws Exception {
+		// TODO Auto-generated method stub
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for (Event evt : evts) {
+			int tempAttendance = Integer.parseInt(evt.getAttendance());
+			if (tempAttendance > i) {
+				toDo.add(evt);
+			}
+		}
+		
+		return toDo;
+	}
 }
