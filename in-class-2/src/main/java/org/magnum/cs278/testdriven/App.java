@@ -34,7 +34,7 @@ public class App {
 	public static void main(String[] args) throws Exception {
 
 		App app = new App();
-		List<Event> evts = app.getThreeThingsToDo();
+		List<Event> evts = app.getParkSpecialPermits();
 		for (Event e : evts) {
 			System.out.println(e);
 		}
@@ -63,4 +63,15 @@ public class App {
 				eventListType
 				);
 	}
+
+    public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
+        List<Event> evts = new ArrayList<Event>();
+
+        for (Event evt : getParkSpecialPermits()) {
+            if (evt.getLocation().toLowerCase().equals("riverfront park")) {
+                evts.add(evt);
+            }
+        }
+        return evts;
+    }
 }
