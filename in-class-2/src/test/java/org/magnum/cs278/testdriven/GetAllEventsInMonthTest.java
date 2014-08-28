@@ -7,12 +7,12 @@ import java.util.List;
 import org.junit.Test;
 
 public class GetAllEventsInMonthTest {
-	App app = new App();
+	private App app = new App();
 	@Test
-	public void test() {
-		List <Event> evts = getAllEventsInMonth("january");
+	public void test() throws Exception {
+		List <Event> evts = app.getAllEventsInMonth("Jan-2014");
 		for(Event e : evts){
-			assertTrue(e.getMonth().toLowerCase().equals("january"));
+			assertTrue(e.getMonth().equals("Jan-2014"));
 		}
 		
 	}
