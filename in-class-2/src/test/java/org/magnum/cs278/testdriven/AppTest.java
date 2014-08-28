@@ -46,5 +46,15 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
-
+	
+	@Test
+	public void testGetEventsWithName() throws Exception {
+		List<Event> events = app.getEventsWithName(name);
+		for( Event event : events){
+			assertTrue(events.getName().toLower().equals( (name.toLower())));
+		}
+		
+	}
+	
+	
 }
