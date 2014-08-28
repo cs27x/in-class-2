@@ -52,7 +52,7 @@ public class AppTest {
 		List<Event> events = app.AttendanceGreaterThanFive();
 		
 		for(Event event: events){
-			assertTrue(event.getAttendance > 5);
+			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
 		}
 	}
 
