@@ -15,8 +15,6 @@ public class GetLocationTest {
 	public void testGetSanFrancisco() {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
 		
-		assertTrue(sanFranEvents.size() > 0);
-		
 		DateTime today = DateTime.now();
 		
 		for(Event event : sanFranEvents){
