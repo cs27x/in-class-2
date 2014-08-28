@@ -12,10 +12,8 @@ public class GetLocationTest {
 	private App app = new App();
 	
 	@Test
-	public void testGetSanFrancisco() {
+	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		assertTrue(sanFranEvents.size() > 0);
 		
 		DateTime today = DateTime.now();
 		
