@@ -51,7 +51,7 @@ public class AppTest {
 	public void testGetEventsInJune() throws Exception {
 		List<Event> events = app.getEventsInJune();
 		for(Event event : events) {
-			assertTrue(event.getMonth().toLowerCase().equals("june"));
+			assertTrue(event.getMonth().toLowerCase().contains("jun"));
 		}
 	}
 
