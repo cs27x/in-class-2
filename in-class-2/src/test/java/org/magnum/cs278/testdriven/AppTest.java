@@ -46,5 +46,13 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetEventsForMonth() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
+	}
 
 }
