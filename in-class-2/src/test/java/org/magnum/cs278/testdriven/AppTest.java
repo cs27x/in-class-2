@@ -52,7 +52,8 @@ public class AppTest {
 	     private App app = new App();
 
 	     @Test
-	     public void test() {
+	     // added throw
+	     public void test() throws Exception {
 	         
 	    	List<Event> events = app.checkLocation("East Park");
 	 		assertTrue(events.size() > 0);
