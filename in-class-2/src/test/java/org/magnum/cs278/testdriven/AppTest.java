@@ -46,5 +46,14 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
-
+	
+	@Test
+	public void testGetFirstEventOfMonth() throws Exception {
+		String month = "Feb-2014";
+		String testEventName = "Cupid's Chase";
+		
+		Event first = app.getFirstEventOfMonth(month);
+		
+		assertTrue(first.getName().equals(testEventName));
+	}
 }
