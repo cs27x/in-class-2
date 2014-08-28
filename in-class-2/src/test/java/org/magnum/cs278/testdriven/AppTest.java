@@ -47,4 +47,11 @@ public class AppTest {
 		}
 	}
 
+	@Test
+	public void testGetEventsLargerThan() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
+
 }
