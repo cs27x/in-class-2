@@ -46,5 +46,16 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetTodaysEvents() throws Exception {
+		List<Event> todaysEvents = app.getTodaysEvents();
+		
+		for(Event event : todaysEvents){
+			assertEquals(event.getDateTime().year(), DateTime.now().year());
+			assertEquals(event.getDateTime().monthOfYear(), DateTime.now().monthOfYear());
+			assertEquals(event.getDateTime().dayOfMonth(), DateTime.now().dayOfMonth());
+		}
+	}
 
 }
