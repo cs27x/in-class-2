@@ -47,6 +47,7 @@ public class AppTest {
 		}
 	}
 	
+	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> events = app.getParkSpecialPermitsByAttendance();
 		assertTrue(events.size() > 0);
@@ -55,6 +56,9 @@ public class AppTest {
 		for(Event event : events){
 			if (Double.parseDouble(event.getAttendance()) > last){
 				sorted = false;
+			}
+			else {															// had to add else statement to fix test
+				last = Double.parseDouble(event.getAttendance());
 			}
 			assertNotNull(event);
 			assertNotNull(event.getLocation());
