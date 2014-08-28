@@ -46,5 +46,25 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+//	@Test
+//	public void testGetParkSpecialPermitsBeforeDateTest() throws Exception {
+//		List<Event> events = app.getParkSpecialPermitsBeforeDateTest();
+//		assertTrue(events.size() > 0);
+//		for(Event event : events){
+//			assertNotNull(event);
+//			assertNotNull(event.getLocation());
+//			assertNotNull(event.getName());
+//			assertNotNull(event.getAttendance());
+//			assertNotNull(event.getDate());
+//		}
+//	}
+	
+	@Test
+	public void testGetEventsLargerThan() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
 
 }

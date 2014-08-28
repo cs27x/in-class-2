@@ -63,4 +63,21 @@ public class App {
 				eventListType
 				);
 	}
+	
+    
+    public List<Event> getEventsLargerThan(int attendence) throws Exception {
+        List<Event> toDo = new ArrayList<Event>();
+        List<Event> evts = getParkSpecialPermits();
+
+        for (Event evt : evts) {
+            if (Integer.parseInt(evt.getAttendance()) > attendence) {
+                toDo.add(evt);
+            }
+        }
+        
+        return toDo;
+    }
+    
+    
+    
 }
