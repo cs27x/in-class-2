@@ -46,5 +46,14 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testAttendanceGreaterThanFive() throws Exception{
+		List<Event> events = app.AttendanceGreaterThanFive();
+		
+		for(Event event: events){
+			assertTrue(event.getAttendance > 5);
+		}
+	}
 
 }
