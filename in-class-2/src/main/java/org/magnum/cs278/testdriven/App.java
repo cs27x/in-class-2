@@ -2,6 +2,7 @@ package org.magnum.cs278.testdriven;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -65,10 +66,11 @@ public class App {
 	}
 	
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
-		return objectMapper.readValue(new URL(
-				PARK_SPECIAL_PERMITS),
-				eventListType
-				);
+		List<Event> evts = getParkSpecialPermits();
+
+		Collections.sort(evts, new EventAttendanceComparator());
+		
+		return evts;
 	}
 	
 }
