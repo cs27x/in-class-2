@@ -63,4 +63,12 @@ public class App {
 				eventListType
 				);
 	}
+	
+	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
+		return objectMapper.readValue(new URL(
+				PARK_SPECIAL_PERMITS),
+				eventListType
+				);
+	}
+	
 }
