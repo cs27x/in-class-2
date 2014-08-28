@@ -93,6 +93,8 @@ assemble your team and begin the assignment. You should start by
 completing the following steps:
 
 1. Each team member should clone this repo: https://github.com/cs27x/in-class-2
+   and import the in-class-2 project into Eclipse as a Gradle project. Do not 
+   import the entire repository into Eclipse.
 2. The team should dream up N new features, where N = Floor(total members / 2),
    for the application. Each individual feature should be implementable by a fellow classmate
    in 5min or less.
