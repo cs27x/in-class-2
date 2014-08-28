@@ -63,4 +63,19 @@ public class App {
 				eventListType
 				);
 	}
+	
+	public Event getFirstEventOfMonth(String month){
+		Event ret("", "", "", "", "32");
+		List<Event> events = getParkSpecialPermits();
+		for(Event event: events){
+			if(event.getMonth().equals(month)){
+				int curDate = Integer.parseInt(ret.getDate());
+				int newDate = Integer.parseInt(event.getDate());
+				if(curDate < newDate){
+					ret = event;
+				} //if
+			} //if 
+		} //for
+		return event;
+	}
 }
