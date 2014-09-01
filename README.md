@@ -221,9 +221,26 @@ adding this branch to the remote repo, do the following:
 
 ## Part 4 - Merging
 
-You have the rest of the class to use your strategy to completely merge the code into your groupX_master
-branch and get all of the tests to pass. If you do not complete the assignment in class,
-your team is responsible for completing it before class next Tuesday. If you have an
-effective strategy and complete the assignment, you only need to do the assigned reading.
-Otherwise, you need to do the assigned reading and finish this assignment. 
+Use your strategy to completely merge the code into your groupX_master
+branch and get all of the tests to pass. 
+
+## Part 5 - Refactoring
+
+Each team member should suggest one refactoring [http://martinfowler.com/books/refactoring.html] 
+or improvement to the merged code. Each refactoring should be "suggested" by creating a branch named
+"refactoring/firstname_lastname/groupX", applying the suggested refactoring, pushing the
+branch to the remote repo, and then opening a pull request [https://help.github.com/articles/using-pull-requests]
+for your teammates to review the refactoring. Your team should devise and use a process for 
+reviewing and merging these pull requests into its groupX_master branch. Someone other than the
+creator of the pull request must merge it. One way to accomplish this would be to have all team members
+submit their pull requests and then stop and discuss each one as a group before merging it.
+
+At the end of Part 5, all of the teams should have merged all of the features into their groupX_master
+branches and refactored these branches via merging a series of pull requests from submitted by each
+team member. Each team will have successfully emulated a large team-based software development,
+integration, and refactoring process in a super-condensed timeframe. Every team member should have gained
+basic familiarity with Git, testing, implementing features, merging / integrating work, and refactoring
+to fix inherent inefficiencies that show up in distributed development. 
+
+__Question: How hard would it have been to integrate these features and refactor without tests?__
 
