@@ -1,7 +1,5 @@
 # In-class Assignment 2
 
-asdf
-
 ## Overview
 
 A challenging component of team software development is that individual
