@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * reflection to swap out the implementation of one method on an object at
  * runtime.
  * 
- * @author jules
+ * @author jules white
  *
  */
 public class App {
