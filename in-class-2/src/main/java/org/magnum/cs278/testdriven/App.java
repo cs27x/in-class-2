@@ -2,6 +2,7 @@ package org.magnum.cs278.testdriven;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -101,5 +102,40 @@ public class App {
 		}
 
 		return toReturn;
+	}
+
+	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
+		List<Event> evts = getParkSpecialPermits();
+
+		Collections.sort(evts, new EventAttendanceComparator());
+		
+		return evts;
+	}
+	
+	public List<Event> checkLocation(String location) throws Exception {
+		List<Event> atDesiredLocation = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		for (Event evt : evts) {
+			if (evt.getLocation() == location) {
+				atDesiredLocation.add(evt);
+			}
+		}
+
+		return atDesiredLocation;
+	}
+
+	public List<Event> getAllEventsInMonth(String month) throws Exception {
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		DateTime now = DateTime.now();
+		for (Event evt : evts) {
+			if (evt.getMonth().equalsIgnoreCase(month) ) {
+				toDo.add(evt);
+			}
+		}
+
+		return toDo;
 	}
 }

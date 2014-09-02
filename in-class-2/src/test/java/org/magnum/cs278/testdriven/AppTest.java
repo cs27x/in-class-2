@@ -73,4 +73,52 @@ public class AppTest {
 			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
 		}
 	}
+
+
+	@Test
+	public void testGetParkSpecialPermitsByAttendance() throws Exception {
+		List<Event> events = app.getParkSpecialPermitsByAttendance();
+		assertTrue(events.size() > 0);
+		boolean sorted = true;
+		double last = Double.POSITIVE_INFINITY;
+		for(Event event : events){
+			if (Double.parseDouble(event.getAttendance()) > last){
+				sorted = false;
+			}
+			else {															// had to add else statement to fix test
+				last = Double.parseDouble(event.getAttendance());
+			}
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+		}
+		assertTrue(sorted);
+	}
+
+	 public class testforLocation {
+
+	     private App app = new App();
+
+	     @Test
+	     // added throw
+	     public void test() throws Exception {
+	         
+	    	List<Event> events = app.checkLocation("East Park");
+	 		assertTrue(events.size() > 0);
+	    	 
+	        for(Event event : events){
+	        	 assertTrue(event.getLocation().equals("East Park"));
+	         }
+	     }
+	 }
+
+	@Test
+	public void test()  throws Exception{
+		List <Event> evts = app.getAllEventsInMonth("january");
+		for(Event e : evts){
+			assertTrue(e.getMonth().toLowerCase().equals("january"));
+		}
+	}
 }
