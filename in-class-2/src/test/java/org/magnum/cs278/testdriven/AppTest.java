@@ -48,6 +48,7 @@ public class AppTest {
 	}
 	
 	@Test
+<<<<<<< HEAD
 	public void testGetFirstEventOfMonth() throws Exception {
 		String month = "Feb-2014";
 		String testEventName = "Cupid's Chase";
@@ -56,4 +57,20 @@ public class AppTest {
 		
 		assertTrue(first.getName().equals(testEventName));
 	}
+=======
+	public void testGetEventsForMonth() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
+	}
+
+	@Test
+	public void testGetEventsLargerThan() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
+
+>>>>>>> df6e4eb859c2cf130eda2b53a17c99596bc52d9c
 }

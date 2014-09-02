@@ -2,6 +2,7 @@ package org.magnum.cs278.testdriven;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -82,5 +83,36 @@ public class App {
 			} //if 
 		} //for
 		return ret;
+	}
+
+	public List<Event> getEventsForMonth(String date) throws Exception {
+		List<Event> temp;
+		temp = objectMapper.readValue(new URL(
+				PARK_SPECIAL_PERMITS),
+				eventListType
+				);
+		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
+			Event a = iter.next();
+			if (!a.getMonth().equals(date)){
+				iter.remove();
+			}
+		}
+		return temp;
+	}
+	
+
+	public List<Event> getEventsLargerThan(int i)  throws Exception {
+		// TODO Auto-generated method stub
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for (Event evt : evts) {
+			int tempAttendance = Integer.parseInt(evt.getAttendance());
+			if (tempAttendance > i) {
+				toDo.add(evt);
+			}
+		}
+		
+		return toDo;
 	}
 }
