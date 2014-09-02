@@ -46,5 +46,18 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetParkRegularPermits() throws Exception {
+		List<Event> events = app.getParkRegularPermits();
+		assertTrue(events.size() > 0);
+		for(Event event : events){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+		}
+	}
 
 }
