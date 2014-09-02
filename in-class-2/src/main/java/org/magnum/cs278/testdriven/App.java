@@ -35,7 +35,7 @@ public class App {
 	public static void main(String[] args) throws Exception {
 
 		App app = new App();
-		List<Event> evts = app.getThreeThingsToDo();
+		List<Event> evts = app.getParkSpecialPermits();
 		for (Event e : evts) {
 			System.out.println(e);
 		}
@@ -70,7 +70,7 @@ public class App {
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
-			if (evt.getLocation() == location) {
+			if (evt.getLocation().equals(location)) {
 				atDesiredLocation.add(evt);
 			}
 		}

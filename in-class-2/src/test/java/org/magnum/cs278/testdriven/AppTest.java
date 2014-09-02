@@ -47,16 +47,16 @@ public class AppTest {
 		}
 	}
 
-     @Test
-     public void testForLocation() throws Exception {
+    @Test
+    public void testForLocation() throws Exception {
 
         List<Event> events = app.checkLocation("East Park");
         assertTrue(events.size() > 0);
 
         for(Event event : events){
-             assertTrue(event.getLocation().equals("East Park"));
-         }
-     }
+            assertTrue(event.getLocation().equals("East Park"));
+        }
+    }
 
 	@Test
 	public void testGetEventsForMonth() throws Exception {
