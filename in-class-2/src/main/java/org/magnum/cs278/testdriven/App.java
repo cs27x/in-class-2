@@ -2,6 +2,8 @@ package org.magnum.cs278.testdriven;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Collections;
 import java.util.List;
 
@@ -105,11 +107,86 @@ public class App {
 	}
 
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
-		List<Event> evts = getParkSpecialPermits();
+        List<Event> evts = getParkSpecialPermits();
 
-		Collections.sort(evts, new EventAttendanceComparator());
+        Collections.sort(evts, new EventAttendanceComparator());
+
+        return evts;
+    }
+	
+	public List<Event> getEventsForYear(String yearString) throws Exception{
+		List<Event> evtsForYear = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
 		
-		return evts;
+		yearString = yearString.substring(yearString.length() - 2);
+
+		for (Event evt : evts) {
+			String eventDate = evt.getDate();
+			eventDate.substring(eventDate.length() - 2);
+			if (eventDate == yearString) {
+				evtsForYear.add(evt);
+			}
+		}
+
+		return evtsForYear;
+	}
+	
+	public List<Event> getMarchEvents2014() throws Exception {
+		List<Event> march_evts = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for (Event evt: evts) {
+			if (evt.getMonth().equals("Mar-2014"))
+				march_evts.add(evt);
+		}
+		return march_evts;
+	}
+	
+	public List<Event> getEventsWithLocation(String location) throws Exception {
+		List<Event> evts = getParkSpecialPermits();
+		List<Event> evtsAtLocation = new ArrayList<Event>();
+		for (Event evt : evts) {
+			if (evt.getLocation().equals(location)) {
+				evtsAtLocation.add(evt);
+			}
+		}
+		return evtsAtLocation;
+	}
+	
+	public List<Event> getTodaysEvents() throws Exception {
+		List<Event> todaysEvents = new ArrayList<Event>();
+		List<Event> events = getParkSpecialPermits();
+		Calendar calendar = Calendar.getInstance();
+	    int year = calendar.get(Calendar.YEAR);
+	    int month = calendar.get(Calendar.MONTH);
+	    int day = calendar.get(Calendar.DATE);
+	    calendar.set(year, month, day, 0, 0, 0);
+		for (Event evt : events) {
+			if(evt.getDateTime().equals(calendar.getTimeInMillis())){
+				todaysEvents.add(evt);
+			}
+		}
+		return todaysEvents;
+	}
+	
+	public Event getFirstEventOfMonth(String month) throws Exception {
+		List<Event> events = getParkSpecialPermits();
+		Event ret = new Event("", "", "", "", "");
+		boolean initial = false;
+		for(Event event: events){
+			if(event.getMonth().equals(month)){
+				if(!initial){
+					ret = event;
+					initial = true;
+					continue;
+				}
+				DateTime newDate = event.getDateTime();
+				if(ret.getDateTime().isAfter(newDate)){
+					ret = event;
+				} //if
+			} //if 
+		} //for
+		return ret;
 	}
 	
 	public List<Event> checkLocation(String location) throws Exception {
@@ -125,6 +202,21 @@ public class App {
 		return atDesiredLocation;
 	}
 
+	public List<Event> getEventsForMonth(String date) throws Exception {
+		List<Event> temp;
+		temp = objectMapper.readValue(new URL(
+				PARK_SPECIAL_PERMITS),
+				eventListType
+				);
+		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
+			Event a = iter.next();
+			if (!a.getMonth().equals(date)){
+				iter.remove();
+			}
+		}
+		return temp;
+	}
+
 	public List<Event> getAllEventsInMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
@@ -138,4 +230,22 @@ public class App {
 
 		return toDo;
 	}
+
+	public List<Event> getEventsLargerThan(int i)  throws Exception {
+		// TODO Auto-generated method stub
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for (Event evt : evts) {
+			int tempAttendance = Integer.parseInt(evt.getAttendance());
+			if (tempAttendance > i) {
+				toDo.add(evt);
+			}
+		}
+		
+		return toDo;
+	}
+
+
+
 }
