@@ -55,6 +55,7 @@ public class AppTest {
 		}
 	}
 	
+	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
 		List<Event> events = app.AttendanceGreaterThanFive();
 		
