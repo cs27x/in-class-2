@@ -46,7 +46,6 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
-	
 
 	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
@@ -87,4 +86,11 @@ public class AppTest {
 	     }
 	 }
 
+	@Test
+	public void test()  throws Exception{
+		List <Event> evts = app.getAllEventsInMonth("january");
+		for(Event e : evts){
+			assertTrue(e.getMonth().toLowerCase().equals("january"));
+		}
+	}
 }
