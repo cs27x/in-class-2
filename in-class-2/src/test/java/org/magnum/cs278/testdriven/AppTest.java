@@ -46,5 +46,30 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetEventsInJune() throws Exception {
+		List<Event> events = app.getEventsInJune();
+		for(Event event : events) {
+			assertTrue(event.getMonth().toLowerCase().contains("jun"));
+		}
+	}
+	
+	public void testAttendanceGreaterThanFive() throws Exception{
+		List<Event> events = app.AttendanceGreaterThanFive();
+		
+		for(Event event: events){
+			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
+		}
+	}
 
+	//list of Riverfront park special permits
+	@Test
+	public void testLocationNashville() throws Exception {
+		List<Event> events = app.getRiverfrontParkSpecialPermits();
+        assertTrue(events.size() > 0);
+		for(Event event : events) {
+			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
+		}
+	}
 }

@@ -34,7 +34,7 @@ public class App {
 	public static void main(String[] args) throws Exception {
 
 		App app = new App();
-		List<Event> evts = app.getThreeThingsToDo();
+		List<Event> evts = app.getParkSpecialPermits();
 		for (Event e : evts) {
 			System.out.println(e);
 		}
@@ -62,5 +62,44 @@ public class App {
 				PARK_SPECIAL_PERMITS),
 				eventListType
 				);
+	}
+
+	public List<Event> getEventsInJune() throws Exception {
+		List<Event> juneEvents = new ArrayList<Event>();
+		List<Event> events = getParkSpecialPermits();
+		
+		for (Event event : events) {
+			if (event.getMonth().contains("jun")) {
+				juneEvents.add(event);
+			}
+		}
+		
+		return juneEvents;
+	}
+	
+    public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
+        List<Event> evts = new ArrayList<Event>();
+
+        for (Event evt : getParkSpecialPermits()) {
+            if (evt.getLocation().toLowerCase().equals("riverfront park")) {
+                evts.add(evt);
+            }
+        }
+        return evts;
+    }
+	
+	public List<Event> AttendanceGreaterThanFive() throws Exception {
+		
+		List<Event> toReturn = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		for (Event evt : evts) {
+			
+			if(Integer.parseInt(evt.getAttendance()) > 5){
+				toReturn.add(evt);
+			}
+		}
+
+		return toReturn;
 	}
 }
