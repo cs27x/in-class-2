@@ -1,7 +1,9 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -140,5 +142,21 @@ public class App {
 			}
 		}
 		return evtsAtLocation;
+	}
+	
+	public List<Event> getTodaysEvents() throws Exception {
+		List<Event> todaysEvents = new ArrayList<Event>();
+		List<Event> events = getParkSpecialPermits();
+		Calendar calendar = Calendar.getInstance();
+	    int year = calendar.get(Calendar.YEAR);
+	    int month = calendar.get(Calendar.MONTH);
+	    int day = calendar.get(Calendar.DATE);
+	    calendar.set(year, month, day, 0, 0, 0);
+		for (Event evt : events) {
+			if(evt.getDateTime().equals(calendar.getTimeInMillis())){
+				todaysEvents.add(evt);
+			}
+		}
+		return todaysEvents;
 	}
 }
