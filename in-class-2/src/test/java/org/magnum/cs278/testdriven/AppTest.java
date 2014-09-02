@@ -46,5 +46,13 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetEventsInJune() throws Exception {
+		List<Event> events = app.getEventsInJune();
+		for(Event event : events) {
+			assertTrue(event.getMonth().toLowerCase().contains("jun"));
+		}
+	}
 
 }

@@ -63,4 +63,17 @@ public class App {
 				eventListType
 				);
 	}
+
+	public List<Event> getEventsInJune() throws Exception {
+		List<Event> juneEvents = new ArrayList<Event>();
+		List<Event> events = getParkSpecialPermits();
+		
+		for (Event event : events) {
+			if (event.getMonth().contains("jun")) {
+				juneEvents.add(event);
+			}
+		}
+		
+		return juneEvents;
+	}
 }
