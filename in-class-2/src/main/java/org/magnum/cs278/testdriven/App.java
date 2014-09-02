@@ -76,6 +76,7 @@ public class App {
 			}
 		}
 		return evtsAtLocation;
+	}
 
 
 	public List<Event> getTodaysEvents() throws Exception {
@@ -92,6 +93,7 @@ public class App {
 			}
 		}
 		return todaysEvents;
+	}
 		
 	
 	public List<Event> getMarchEvents2014() throws Exception {
