@@ -64,6 +64,26 @@ public class App {
 				eventListType
 				);
 	}
+	
+	public Event getFirstEventOfMonth(String month) throws Exception {
+		List<Event> events = getParkSpecialPermits();
+		Event ret = new Event("", "", "", "", "");
+		boolean initial = false;
+		for(Event event: events){
+			if(event.getMonth().equals(month)){
+				if(!initial){
+					ret = event;
+					initial = true;
+					continue;
+				}
+				DateTime newDate = event.getDateTime();
+				if(ret.getDateTime().isAfter(newDate)){
+					ret = event;
+				} //if
+			} //if 
+		} //for
+		return ret;
+	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
 		List<Event> temp;
@@ -95,5 +115,4 @@ public class App {
 		
 		return toDo;
 	}
-
 }

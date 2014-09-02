@@ -48,6 +48,16 @@ public class AppTest {
 	}
 	
 	@Test
+<<<<<<< HEAD
+	public void testGetFirstEventOfMonth() throws Exception {
+		String month = "Feb-2014";
+		String testEventName = "Cupid's Chase";
+		
+		Event first = app.getFirstEventOfMonth(month);
+		
+		assertTrue(first.getName().equals(testEventName));
+	}
+=======
 	public void testGetEventsForMonth() throws Exception {
 		
 		List<Event> events = app.getEventsForMonth("Jan-2014");
@@ -62,4 +72,5 @@ public class AppTest {
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
 
+>>>>>>> df6e4eb859c2cf130eda2b53a17c99596bc52d9c
 }
