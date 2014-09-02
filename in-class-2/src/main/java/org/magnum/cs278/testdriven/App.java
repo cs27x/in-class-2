@@ -73,4 +73,16 @@ public class App {
 		return evts;
 	}
 	
+	public List<Event> checkLocation(String location) throws Exception {
+		List<Event> atDesiredLocation = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		for (Event evt : evts) {
+			if (evt.getLocation() == location) {
+				atDesiredLocation.add(evt);
+			}
+		}
+
+		return atDesiredLocation;
+	}
 }

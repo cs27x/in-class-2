@@ -47,6 +47,7 @@ public class AppTest {
 		}
 	}
 	
+
 	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> events = app.getParkSpecialPermitsByAttendance();
@@ -68,5 +69,22 @@ public class AppTest {
 		}
 		assertTrue(sorted);
 	}
+
+	 public class testforLocation {
+
+	     private App app = new App();
+
+	     @Test
+	     // added throw
+	     public void test() throws Exception {
+	         
+	    	List<Event> events = app.checkLocation("East Park");
+	 		assertTrue(events.size() > 0);
+	    	 
+	        for(Event event : events){
+	        	 assertTrue(event.getLocation().equals("East Park"));
+	         }
+	     }
+	 }
 
 }
