@@ -60,4 +60,9 @@ public class Event {
 			return DateTime.now();
 		}
 	}
+
+    @Override
+    public String toString() {
+        return this.name + " / " + this.location + " / " + this.attendance + " / " + this.month + " / " + this.date;
+    }
 }
