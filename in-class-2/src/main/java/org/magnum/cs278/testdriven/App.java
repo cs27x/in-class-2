@@ -3,11 +3,8 @@ package org.magnum.cs278.testdriven;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Calendar;
-=======
 import java.util.Iterator;
->>>>>>> group1_master
 import java.util.List;
 
 import org.joda.time.DateTime;
