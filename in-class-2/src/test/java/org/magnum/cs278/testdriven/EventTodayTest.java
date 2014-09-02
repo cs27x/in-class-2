@@ -15,7 +15,7 @@ public class EventTodayTest {
 	@Test
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
-		assertEquals(5, whatToDo.size());
+
 		DateTime today = DateTime.now();
 		
 		for(Event thingToDo : whatToDo){
@@ -25,7 +25,8 @@ public class EventTodayTest {
 			try{
 				DateTime eventDate = Event.DATE_TIME_FORMAT.parseDateTime(thingToDo.getDate());
 				assertTrue(eventDate.isEqualNow());
-			}catch(IllegalArgumentException arg){
+			} catch(IllegalArgumentException arg) {
+                arg.printStackTrace();
 			}
 		}
 	}
