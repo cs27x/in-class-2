@@ -117,7 +117,7 @@ public class App {
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
-			if (evt.getLocation() == location) {
+			if (evt.getLocation().equals(location)) {
 				atDesiredLocation.add(evt);
 			}
 		}

@@ -97,25 +97,19 @@ public class AppTest {
 		assertTrue(sorted);
 	}
 
-	 public class testforLocation {
+    @Test
+    public void testCheckLocation() throws Exception {
 
-	     private App app = new App();
+        List<Event> events = app.checkLocation("East Park");
+        assertTrue(events.size() > 0);
 
-	     @Test
-	     // added throw
-	     public void test() throws Exception {
-	         
-	    	List<Event> events = app.checkLocation("East Park");
-	 		assertTrue(events.size() > 0);
-	    	 
-	        for(Event event : events){
-	        	 assertTrue(event.getLocation().equals("East Park"));
-	         }
-	     }
-	 }
+        for(Event event : events){
+            assertTrue(event.getLocation().equals("East Park"));
+        }
+    }
 
 	@Test
-	public void test()  throws Exception{
+	public void testGetAllEventsInMonth()  throws Exception{
 		List <Event> evts = app.getAllEventsInMonth("january");
 		for(Event e : evts){
 			assertTrue(e.getMonth().toLowerCase().equals("january"));
