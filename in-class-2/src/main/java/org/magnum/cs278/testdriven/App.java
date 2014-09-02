@@ -130,4 +130,15 @@ public class App {
 		}
 		return march_evts;
 	}
+	
+	public List<Event> getEventsWithLocation(String location) throws Exception {
+		List<Event> evts = getParkSpecialPermits();
+		List<Event> evtsAtLocation = new ArrayList<Event>();
+		for (Event evt : evts) {
+			if (evt.getLocation().equals(location)) {
+				evtsAtLocation.add(evt);
+			}
+		}
+		return evtsAtLocation;
+	}
 }
