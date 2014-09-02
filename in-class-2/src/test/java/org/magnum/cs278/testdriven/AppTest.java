@@ -46,22 +46,24 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
-	
-	 public class testforLocation {
 
-	     private App app = new App();
+     @Test
+     public void testForLocation() throws Exception {
 
-	     @Test
-	     // added throw
-	     public void test() throws Exception {
-	         
-	    	List<Event> events = app.checkLocation("East Park");
-	 		assertTrue(events.size() > 0);
-	    	 
-	        for(Event event : events){
-	        	 assertTrue(event.getLocation().equals("East Park"));
-	         }
-	     }
-	 }
+        List<Event> events = app.checkLocation("East Park");
+        assertTrue(events.size() > 0);
+
+        for(Event event : events){
+             assertTrue(event.getLocation().equals("East Park"));
+         }
+     }
+
+	@Test
+	public void testGetEventsForMonth() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
+	}
 
 }
