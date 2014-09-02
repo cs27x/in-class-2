@@ -55,4 +55,11 @@ public class AppTest {
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
+	@Test
+	public void testGetEventsLargerThan() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
+
 }
