@@ -102,4 +102,21 @@ public class App {
 
 		return toReturn;
 	}
+	
+	public List<Event> getEventsForYear(String yearString) throws Exception{
+		List<Event> evtsForYear = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		yearString = yearString.substring(yearString.length() - 2);
+
+		for (Event evt : evts) {
+			String eventDate = evt.getDate();
+			eventDate.substring(eventDate.length() - 2);
+			if (eventDate == yearString) {
+				evtsForYear.add(evt);
+			}
+		}
+
+		return evtsForYear;
+	}
 }
