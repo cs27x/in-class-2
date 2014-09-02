@@ -54,6 +54,14 @@ public class AppTest {
 			assertTrue(event.getMonth().toLowerCase().contains("jun"));
 		}
 	}
+	
+	public void testAttendanceGreaterThanFive() throws Exception{
+		List<Event> events = app.AttendanceGreaterThanFive();
+		
+		for(Event event: events){
+			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
+		}
+	}
 
 	//list of Riverfront park special permits
 	@Test

@@ -87,4 +87,19 @@ public class App {
         }
         return evts;
     }
+	
+	public List<Event> AttendanceGreaterThanFive() throws Exception {
+		
+		List<Event> toReturn = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		for (Event evt : evts) {
+			
+			if(Integer.parseInt(evt.getAttendance()) > 5){
+				toReturn.add(evt);
+			}
+		}
+
+		return toReturn;
+	}
 }
