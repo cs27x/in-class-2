@@ -4,6 +4,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -158,5 +159,56 @@ public class App {
 			}
 		}
 		return todaysEvents;
+	}
+	
+	public Event getFirstEventOfMonth(String month) throws Exception {
+		List<Event> events = getParkSpecialPermits();
+		Event ret = new Event("", "", "", "", "");
+		boolean initial = false;
+		for(Event event: events){
+			if(event.getMonth().equals(month)){
+				if(!initial){
+					ret = event;
+					initial = true;
+					continue;
+				}
+				DateTime newDate = event.getDateTime();
+				if(ret.getDateTime().isAfter(newDate)){
+					ret = event;
+				} //if
+			} //if 
+		} //for
+		return ret;
+	}
+
+	public List<Event> getEventsForMonth(String date) throws Exception {
+		List<Event> temp;
+		temp = objectMapper.readValue(new URL(
+				PARK_SPECIAL_PERMITS),
+				eventListType
+				);
+		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
+			Event a = iter.next();
+			if (!a.getMonth().equals(date)){
+				iter.remove();
+			}
+		}
+		return temp;
+	}
+	
+
+	public List<Event> getEventsLargerThan(int i)  throws Exception {
+		// TODO Auto-generated method stub
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for (Event evt : evts) {
+			int tempAttendance = Integer.parseInt(evt.getAttendance());
+			if (tempAttendance > i) {
+				toDo.add(evt);
+			}
+		}
+		
+		return toDo;
 	}
 }

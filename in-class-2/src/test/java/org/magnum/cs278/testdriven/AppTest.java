@@ -72,4 +72,27 @@ public class AppTest {
 			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
 		}
 	}
+	
+	public void testGetFirstEventOfMonth() throws Exception {
+		String month = "Feb-2014";
+		String testEventName = "Cupid's Chase";
+		
+		Event first = app.getFirstEventOfMonth(month);
+		
+		assertTrue(first.getName().equals(testEventName));
+	}
+
+	public void testGetEventsForMonth() throws Exception {
+		
+		List<Event> events = app.getEventsForMonth("Jan-2014");
+		assertTrue(events.size() == 1);
+		assertEquals("Jan-2014", events.get(0).getMonth());
+	}
+
+	@Test
+	public void testGetEventsLargerThan() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
 }
