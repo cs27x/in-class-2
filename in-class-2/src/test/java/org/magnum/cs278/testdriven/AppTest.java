@@ -47,12 +47,6 @@ public class AppTest {
 		}
 	}
 	
-	@Test
-	public void testBingBangBoom() throws Exception {
-		List<Event> events = app.getParkSpecialPermits();
-		assertTrue(events.size() > 0);
-	}
-	
 	
 
 }
