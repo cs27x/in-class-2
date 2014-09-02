@@ -66,4 +66,12 @@ public class AppTest {
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
+	
+	@Test
+	public void testGetAllEventsInMonth()  throws Exception{
+		List <Event> evts = app.getAllEventsInMonth("january");
+		for(Event e : evts){
+			assertTrue(e.getMonth().toLowerCase().equals("january"));
+		}
+	}
 }

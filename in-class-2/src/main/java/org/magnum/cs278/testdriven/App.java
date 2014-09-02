@@ -64,7 +64,7 @@ public class App {
 				eventListType
 				);
 	}
-	
+
 	public List<Event> checkLocation(String location) throws Exception {
 		List<Event> atDesiredLocation = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
@@ -93,4 +93,17 @@ public class App {
 		return temp;
 	}
 
+	public List<Event> getAllEventsInMonth(String month) throws Exception {
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+
+		DateTime now = DateTime.now();
+		for (Event evt : evts) {
+			if (evt.getMonth().equalsIgnoreCase(month) ) {
+				toDo.add(evt);
+			}
+		}
+
+		return toDo;
+	}
 }
