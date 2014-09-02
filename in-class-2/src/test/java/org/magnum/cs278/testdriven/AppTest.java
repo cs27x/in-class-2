@@ -46,5 +46,22 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	 public class testforLocation {
+
+	     private App app = new App();
+
+	     @Test
+	     // added throw
+	     public void test() throws Exception {
+	         
+	    	List<Event> events = app.checkLocation("East Park");
+	 		assertTrue(events.size() > 0);
+	    	 
+	        for(Event event : events){
+	        	 assertTrue(event.getLocation().equals("East Park"));
+	         }
+	     }
+	 }
 
 }
