@@ -64,18 +64,23 @@ public class App {
 				);
 	}
 	
-	public Event getFirstEventOfMonth(String month){
-		Event ret("", "", "", "", "32");
+	public Event getFirstEventOfMonth(String month) throws Exception {
 		List<Event> events = getParkSpecialPermits();
+		Event ret = new Event("", "", "", "", "");
+		boolean initial = false;
 		for(Event event: events){
 			if(event.getMonth().equals(month)){
-				int curDate = Integer.parseInt(ret.getDate());
-				int newDate = Integer.parseInt(event.getDate());
-				if(curDate < newDate){
+				if(!initial){
+					ret = event;
+					initial = true;
+					continue;
+				}
+				DateTime newDate = event.getDateTime();
+				if(ret.getDateTime().isAfter(newDate)){
 					ret = event;
 				} //if
 			} //if 
 		} //for
-		return event;
+		return ret;
 	}
 }
