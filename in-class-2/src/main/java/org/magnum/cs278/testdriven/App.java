@@ -63,4 +63,21 @@ public class App {
 				eventListType
 				);
 	}
+	
+	public getEventsForYear(string yearString){
+		List<Event> evtsForYear = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		yearString = yearString.substring(yearString.length() - 2);
+
+		for (Event evt : evts) {
+			string eventDate = evt.getDate();
+			eventDate.substring(eventDate.length() - 2);
+			if (eventDate == yearString) {
+				evtsForYear.add(evt);
+			}
+		}
+
+		return evtsForYear;
+	}
 }
