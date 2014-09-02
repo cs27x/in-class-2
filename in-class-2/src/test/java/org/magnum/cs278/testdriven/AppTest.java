@@ -46,6 +46,28 @@ public class AppTest {
 			assertNotNull(event.getDate());
 		}
 	}
+	
+	@Test
+	public void testGetParkSpecialPermitsByAttendance() throws Exception {
+		List<Event> events = app.getParkSpecialPermitsByAttendance();
+		assertTrue(events.size() > 0);
+		boolean sorted = true;
+		double last = Double.POSITIVE_INFINITY;
+		for(Event event : events){
+			if (Double.parseDouble(event.getAttendance()) > last){
+				sorted = false;
+			}
+			else {															// had to add else statement to fix test
+				last = Double.parseDouble(event.getAttendance());
+			}
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+		}
+		assertTrue(sorted);
+	}
 
     @Test
     public void testForLocation() throws Exception {
