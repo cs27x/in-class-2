@@ -65,12 +65,7 @@ public class AppTest {
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
-	@Test
-	public void testGetEventsLargerThan() throws Exception {
-		List<Event> events = app.getEventsLargerThan(1000);
-		for (Event event : events)
-			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
-	}
+	
 
 	@Test
 	public void testGetEventsInJune() throws Exception {
@@ -81,8 +76,15 @@ public class AppTest {
 	}
 	
 	@Test
+	public void testGetEventsLargerThanOneThousand() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
+	
+	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+		List<Event> events = app.getEventsLargerThan(5);
 		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
