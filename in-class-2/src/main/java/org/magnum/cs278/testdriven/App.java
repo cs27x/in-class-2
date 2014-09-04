@@ -1,7 +1,6 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Calendar;
@@ -68,7 +67,7 @@ public class App {
 		return objectMapper.readValue(new URL(
 				PARK_SPECIAL_PERMITS),
 				eventListType
-				);
+		);
 	}
 
 	
@@ -163,16 +162,7 @@ public class App {
 	}
 		
 	public List<Event> getEventsInJune() throws Exception {
-		List<Event> juneEvents = new ArrayList<Event>();
-		List<Event> events = getParkSpecialPermits();
-		
-		for (Event event : events) {
-			if (event.getMonth().contains("jun")) {
-				juneEvents.add(event);
-			}
-		}
-		
-		return juneEvents;
+		return getAllEventsInMonth("jun");
 	}
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
@@ -192,7 +182,6 @@ public class App {
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
-			
 			if(Integer.parseInt(evt.getAttendance()) > 5){
 				toReturn.add(evt);
 			}
@@ -225,8 +214,6 @@ public class App {
 	public List<Event> getAllEventsInMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
-
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
