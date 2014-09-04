@@ -120,6 +120,16 @@ public class App {
 		return ret;
 	}
 
+	public List<Event> getEventsForMonth(String date) throws Exception {
+		List<Event> temp = getParkSpecialPermits();
+		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
+			Event a = iter.next();
+			if (!a.getMonth().equals(date)){
+				iter.remove();
+			}
+		}
+		return temp;
+	}
 	
 
 	public List<Event> getEventsLargerThan(int i)  throws Exception {
@@ -138,7 +148,7 @@ public class App {
 		
 
 	public List<Event> getEventsInJune() throws Exception {
-		return getAllEventsInMonth("jun");
+		return getAllEventsInMonth("Jun-2014");
 	}
 
 	
