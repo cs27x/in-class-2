@@ -99,17 +99,19 @@ public class App {
 		return todaysEvents;
 	}
 		
-	
-	public List<Event> getMarchEvents2014() throws Exception {
+
+	public List<Event> getMarchEvents2014() throws Exception{
 		List<Event> march_evts = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 		
-		for (Event evt: evts) {
-			if (evt.getMonth().equals("Mar-2014"))
+		for(Event evt: evts){
+			if(evt.getMonth().equals("Mar-2014")){
 				march_evts.add(evt);
+			}
 		}
 		return march_evts;
-	}	
+	}
+
 	
 	public Event getFirstEventOfMonth(String month) throws Exception {
 		List<Event> events = getParkSpecialPermits();
@@ -132,11 +134,7 @@ public class App {
 	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
-		List<Event> temp;
-		temp = objectMapper.readValue(new URL(
-				PARK_SPECIAL_PERMITS),
-				eventListType
-				);
+		List<Event> temp = getParkSpecialPermits();
 		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
 			Event a = iter.next();
 			if (!a.getMonth().equals(date)){
@@ -164,9 +162,14 @@ public class App {
 		return getEventsAttendanceLargerThan(5);
 	}
 		
+<<<<<<< HEAD
+
 	public List<Event> getEventsInJune() throws Exception {
-		return getAllEventsInMonth("jun");
+		return getAllEventsInMonth("Jun-2014");
 	}
+
+=======
+>>>>>>> f7d0df6ff374a3e4fcb7010e68a9aa6fe133d578
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
         List<Event> evts = new ArrayList<Event>();
@@ -203,6 +206,7 @@ public class App {
 	public List<Event> getAllEventsInMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
+
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
