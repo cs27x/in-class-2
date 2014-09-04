@@ -72,13 +72,6 @@ public class AppTest {
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
 
-	@Test
-	public void testGetEventsInJune() throws Exception {
-		List<Event> events = app.getEventsInJune();
-		for(Event event : events) {
-			assertTrue(event.getMonth().toLowerCase().contains("jun"));
-		}
-	}
 	
 	//list of Riverfront park special permits
 	@Test
@@ -123,12 +116,4 @@ public class AppTest {
             assertTrue(event.getLocation().equals("East Park"));
         }
     }
-
-	@Test
-	public void testGetAllEventsInMonth()  throws Exception{
-		List <Event> evts = app.getAllEventsInMonth("january");
-		for(Event e : evts){
-			assertTrue(e.getMonth().toLowerCase().equals("january"));
-		}
-	}
 }
