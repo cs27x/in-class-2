@@ -102,7 +102,7 @@ public class AppTest {
 
 	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
-		List<Event> events = app.getParkSpecialPermitsByAttendance();
+		List<Event> events = app.SortByAttentance();
 		assertTrue(events.size() > 0);
 		boolean sorted = true;
 		double last = Double.POSITIVE_INFINITY;
