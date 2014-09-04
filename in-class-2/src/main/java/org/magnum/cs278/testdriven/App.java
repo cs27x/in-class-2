@@ -47,7 +47,7 @@ public class App {
 		}
 	}
 
-	public List<Event> getThreeThingsToDo() throws Exception {
+	public List<Event> getThingsToDo(int numberOfThings) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
@@ -55,7 +55,7 @@ public class App {
 		for (Event evt : evts) {
 			if (evt.getDateTime().isAfter(now)) {
 				toDo.add(evt);
-				if (toDo.size() >= 3) {
+				if (toDo.size() >= numberOfThings) {
 					break;
 				}
 			}
