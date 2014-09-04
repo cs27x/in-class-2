@@ -14,9 +14,7 @@ public class GetLocationTest {
 	@Test
 	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		DateTime today = DateTime.now();
-		
+				
 		for(Event event : sanFranEvents){
 			assertNotNull(event);
 			assertNotNull(event.getLocation());

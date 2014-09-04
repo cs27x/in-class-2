@@ -211,7 +211,6 @@ public class App {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
