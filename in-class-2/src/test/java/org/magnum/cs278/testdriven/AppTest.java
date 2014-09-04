@@ -80,15 +80,6 @@ public class AppTest {
 		}
 	}
 	
-	@Test
-	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
-		
-		for(Event event: events){
-			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
-		}
-	}
-
 	//list of Riverfront park special permits
 	@Test
 	public void testLocationNashville() throws Exception {
