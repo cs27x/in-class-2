@@ -81,11 +81,11 @@ public class AppTest {
 	}
 	
 	@Test
-	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+	public void testAttendanceGreaterThanNumber(int n) throws Exception{
+		List<Event> events = app.AttendanceGreaterThanNumber(n);
 		
 		for(Event event: events){
-			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
+			assertTrue(Integer.parseInt(event.getAttendance()) > n);
 		}
 	}
 
