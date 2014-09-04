@@ -75,7 +75,7 @@ public class AppTest {
 	
 	//list of Riverfront park special permits
 	@Test
-	public void testLocationNashville() throws Exception {
+	public void testGetLocationNashville() throws Exception {
 		List<Event> events = app.getRiverfrontParkSpecialPermits();
         assertTrue(events.size() > 0);
 		for(Event event : events) {
@@ -83,6 +83,19 @@ public class AppTest {
 		}
 	}
 
+    @Test
+	public void testGetLocationSanFrancisco() throws Exception {
+		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
+				
+		for(Event event : sanFranEvents){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
+	}
 
 	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
@@ -107,7 +120,7 @@ public class AppTest {
 	}
 
     @Test
-    public void testCheckLocation() throws Exception {
+    public void testGetLocationEastPark() throws Exception {
 
         List<Event> events = app.checkLocation("East Park");
         assertTrue(events.size() > 0);
@@ -118,7 +131,7 @@ public class AppTest {
     }
     
     @Test
-	public void testTodaysEvents() throws Exception {
+	public void testGetEventsToday() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
 		
 		for(Event thingToDo : whatToDo){
@@ -132,18 +145,5 @@ public class AppTest {
 			}
 		}
 	}
-    
-    @Test
-	public void testGetSanFrancisco() throws Exception {
-		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-				
-		for(Event event : sanFranEvents){
-			assertNotNull(event);
-			assertNotNull(event.getLocation());
-			assertNotNull(event.getName());
-			assertNotNull(event.getAttendance());
-			assertNotNull(event.getDate());
-			assertEquals(event.getLocation(), "San Francisco");
-		}
-	}
+
 }
