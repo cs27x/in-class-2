@@ -133,18 +133,15 @@ public class App {
 	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
-		List<Event> temp;
-		temp = objectMapper.readValue(new URL(
-				PARK_SPECIAL_PERMITS),
-				eventListType
-				);
-		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
-			Event a = iter.next();
-			if (!a.getMonth().equals(date)){
-				iter.remove();
+		List<Event> allEvents = getParkSpecialPermits();
+		List<Event> eventsInMonth = new ArrayList<Event>();
+
+		for (Event evt: allEvents) {
+			if (evt.getMonth().equals(date)) {
+				eventsInMonth.add(evt);
 			}
 		}
-		return temp;
+		return eventsInMonth;
 	}
 	
 
