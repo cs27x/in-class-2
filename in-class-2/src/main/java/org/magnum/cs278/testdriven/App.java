@@ -106,7 +106,7 @@ public class App {
 		List<Event> evts = getParkSpecialPermits();
 		
 		for (Event evt: evts) {
-			if (evt.getMonth().equals("Mar-2014"))
+			if (evt.getMonth().toLowerCase().equals("mar-2014"))
 				march_evts.add(evt);
 		}
 		return march_evts;
@@ -167,7 +167,7 @@ public class App {
 		List<Event> events = getParkSpecialPermits();
 		
 		for (Event event : events) {
-			if (event.getMonth().contains("jun")) {
+			if (event.getMonth().toLowerCase().contains("jun")) {
 				juneEvents.add(event);
 			}
 		}
