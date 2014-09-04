@@ -116,4 +116,34 @@ public class AppTest {
             assertTrue(event.getLocation().equals("East Park"));
         }
     }
+    
+    @Test
+	public void testTodaysEvents() throws Exception {
+		List<Event> whatToDo = app.getTodaysEvents();
+		
+		for(Event thingToDo : whatToDo){
+			assertNotNull(thingToDo);
+			assertNotNull(thingToDo.getDate());
+			
+			try{
+				DateTime eventDate = Event.DATE_TIME_FORMAT.parseDateTime(thingToDo.getDate());
+				assertTrue(eventDate.isEqualNow());
+			}catch(IllegalArgumentException arg){
+			}
+		}
+	}
+    
+    @Test
+	public void testGetSanFrancisco() throws Exception {
+		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
+				
+		for(Event event : sanFranEvents){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
+	}
 }
