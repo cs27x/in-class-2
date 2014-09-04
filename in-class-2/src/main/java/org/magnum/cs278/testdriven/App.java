@@ -200,7 +200,6 @@ public class App {
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
-			System.out.println(evt.getMonth());
 			if (evt.getMonth().toLowerCase().contains(month) ) {
 				toDo.add(evt);
 			}
