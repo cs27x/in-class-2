@@ -200,7 +200,7 @@ public class App {
 		return toReturn;
 	}
 
-	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
+	public List<Event> SortByAttentance() throws Exception {
 		List<Event> evts = getParkSpecialPermits();
 
 		Collections.sort(evts, new EventAttendanceComparator());
