@@ -71,6 +71,14 @@ public class AppTest {
 		for (Event event : events)
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
+
+	@Test
+	public void testGetEventsInJune() throws Exception {
+		List<Event> events = app.getAllEventsInMonth("June");
+		for(Event event : events) {
+			assertTrue(event.getMonth().toLowerCase().contains("jun"));
+		}
+	}
 	
 	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
@@ -163,6 +171,15 @@ public class AppTest {
 				assertTrue(eventDate.isEqualNow());
 			}catch(IllegalArgumentException arg){
 			}
+		}
+	}
+	
+	@Test
+	public void testEventsInMarch2014() throws Exception {
+		List<Event> pubs = app.getEventsForMonth("Mar-2014");
+		assertTrue(pubs.size() > 0); // At least one March-2014 event.
+		for(Event temp : pubs) {
+			assertEquals(temp.getMonth(),"Mar-2014");
 		}
 	}
 }
