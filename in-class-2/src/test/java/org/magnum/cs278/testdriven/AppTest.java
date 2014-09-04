@@ -81,7 +81,8 @@ public class AppTest {
 	}
 	
 	@Test
-	public void testAttendanceGreaterThanNumber(int n) throws Exception{
+	public void testAttendanceGreaterThanNumber() throws Exception{
+		int n = 5;
 		List<Event> events = app.AttendanceGreaterThanNumber(n);
 		
 		for(Event event: events){
