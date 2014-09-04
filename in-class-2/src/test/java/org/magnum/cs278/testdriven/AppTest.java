@@ -110,7 +110,7 @@ public class AppTest {
 			if (Double.parseDouble(event.getAttendance()) > last){
 				sorted = false;
 			}
-			else {															// had to add else statement to fix test
+			else {	// had to add else statement to fix test
 				last = Double.parseDouble(event.getAttendance());
 			}
 			assertNotNull(event);
@@ -124,7 +124,6 @@ public class AppTest {
 
     @Test
     public void testCheckLocation() throws Exception {
-
         List<Event> events = app.checkLocation("East Park");
         assertTrue(events.size() > 0);
 
@@ -180,5 +179,4 @@ public class AppTest {
 			assertEquals(event.getLocation(), "San Francisco");
 		}
 	}
-	
 }

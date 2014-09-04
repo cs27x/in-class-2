@@ -103,9 +103,8 @@ public class App {
 	public List<Event> getMarchEvents2014() throws Exception{
 		List<Event> march_evts = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
-		
 		for(Event evt: evts){
-			if(evt.getMonth().equals("Mar-2014")){
+			if (evt.getMonth().toLowerCase().equals("mar-2014")){
 				march_evts.add(evt);
 			}
 		}
