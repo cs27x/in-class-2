@@ -67,7 +67,7 @@ public class AppTest {
 
 	@Test
 	public void testGetEventsLargerThan() throws Exception {
-		List<Event> events = app.getEventsLargerThan(1000);
+		List<Event> events = app.getEventsAttendanceLargerThan(1000);
 		for (Event event : events)
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
@@ -82,7 +82,7 @@ public class AppTest {
 	
 	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+		List<Event> events = app.getEventsAttendanceLargerThanFive();
 		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
