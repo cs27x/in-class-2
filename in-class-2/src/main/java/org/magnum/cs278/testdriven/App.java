@@ -188,19 +188,6 @@ public class App {
 		} //for
 		return ret;
 	}
-	
-	public List<Event> checkLocation(String location) throws Exception {
-		List<Event> atDesiredLocation = new ArrayList<Event>();
-		List<Event> evts = getParkSpecialPermits();
-
-		for (Event evt : evts) {
-			if (evt.getLocation().equals(location)) {
-				atDesiredLocation.add(evt);
-			}
-		}
-
-		return atDesiredLocation;
-	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
 		List<Event> temp;
