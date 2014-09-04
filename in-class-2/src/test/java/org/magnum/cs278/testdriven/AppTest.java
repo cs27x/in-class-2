@@ -13,6 +13,11 @@ public class AppTest {
 
 	private App app = new App();
 	
+	/**
+	 * Tests getThreeThingsToDo by checking and confirming the size of the list 
+	 * is of length 3; it also tests to ensure events in the list are not null.
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetThreeThingsToDo() throws Exception {
 		List<Event> whatToDo = app.getThreeThingsToDo();
@@ -34,6 +39,11 @@ public class AppTest {
 		}
 	}
 	
+	/**
+	 * Tests getParkSpecialPermits by checking for a positive list size 
+	 * and not null list elements. 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetParkSpecialPermits() throws Exception {
 		List<Event> events = app.getParkSpecialPermits();
@@ -47,6 +57,11 @@ public class AppTest {
 		}
 	}
 	
+	/**
+	 * Tests getEventsInJune by checking if the events in the list have
+	 * the month "jun" as their month value. 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetEventsInJune() throws Exception {
 		List<Event> events = app.getEventsInJune();
@@ -55,16 +70,24 @@ public class AppTest {
 		}
 	}
 
+	/**
+	 * Tests AttendanceGreaterThanFive by checking the attendance value is 
+	 * greater than 5. 
+	 * @throws Exception
+	 */
 	@Test
-	public void testAttendanceGreaterThanFive() throws Exception{
+	public void testAttendanceGreaterThanFive() throws Exception {
 		List<Event> events = app.AttendanceGreaterThanFive();
-		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
 		}
 	}
 
-	//list of Riverfront park special permits
+	/**
+	 * Tests getRiverfrontParkSpecialPermits by checking that the location 
+	 * is in some part of Nashville, specifically "riverfront park".
+	 * @throws Exception
+	 */
 	@Test
 	public void testLocationNashville() throws Exception {
 		List<Event> events = app.getRiverfrontParkSpecialPermits();
@@ -74,6 +97,10 @@ public class AppTest {
 		}
 	}
 
+	/**
+	 * Tests getFirstEventOfMonth using a known month and event name.
+	 * @throws Exception
+	 */
     @Test
 	public void testGetFirstEventOfMonth() throws Exception {
 		String month = "Feb-2014";
@@ -84,6 +111,11 @@ public class AppTest {
 		assertTrue(first.getName().equals(testEventName));
 	}
 
+    /**
+     * Tests getParkSpecialPermitsByAttendance by checking for positive event size
+     * and going through the event list and checking that the events have non null values
+     * @throws Exception
+     */
     @Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> events = app.getParkSpecialPermitsByAttendance();
@@ -94,7 +126,7 @@ public class AppTest {
 			if (Double.parseDouble(event.getAttendance()) > last){
 				sorted = false;
 			}
-			else {															// had to add else statement to fix test
+			else {
 				last = Double.parseDouble(event.getAttendance());
 			}
 			assertNotNull(event);
@@ -106,6 +138,11 @@ public class AppTest {
 		assertTrue(sorted);
 	}
 
+    /**
+     * Tests checkLocation by checking for positive list size and checking if 
+     * all the events in the list match the location they checked for. 
+     * @throws Exception
+     */
     @Test
     public void testCheckLocation() throws Exception {
 
@@ -117,6 +154,12 @@ public class AppTest {
         }
     }
 
+    /**
+     * Tests getEventsForMonth by checking that there is only one Month-2014
+     * element in the list and checking that the tested month is actually the month
+     * in all the events in the list.
+     * @throws Exception
+     */
 	@Test
 	public void testGetEventsForMonth() throws Exception {
 		
@@ -125,6 +168,11 @@ public class AppTest {
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
+	/**
+	 * Tests getEventsLargerThan() by going through the list of events
+	 * and checks that the attendance is larger than the tested integer value
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetEventsLargerThan() throws Exception {
 		List<Event> events = app.getEventsLargerThan(1000);
@@ -132,6 +180,11 @@ public class AppTest {
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
 
+	/**
+	 * Tests getAllEventsInMonth by checking that all the events in the list
+	 * match a tested month.
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetAllEventsInMonth()  throws Exception{
 		List <Event> evts = app.getAllEventsInMonth("january");
