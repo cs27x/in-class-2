@@ -60,29 +60,30 @@ public class AppTest {
 	@Test
 	public void testGetEventsForMonth() throws Exception {
 		
-		List<Event> events = app.getEventsForMonth("Jan-2014");
+		List<Event> events = app.getAllEventsInMonth("Jan-2014");
 		assertTrue(events.size() == 1);
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
 	@Test
 	public void testGetEventsLargerThan() throws Exception {
-		List<Event> events = app.getEventsLargerThan(1000);
+		List<Event> events = app.getEventsAttendanceLargerThan(1000);
 		for (Event event : events)
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
 
-	@Test
+	/*@Test
 	public void testGetEventsInJune() throws Exception {
 		List<Event> events = app.getEventsInJune();
+		assertTrue(events.size() >0);
 		for(Event event : events) {
 			assertTrue(event.getMonth().toLowerCase().contains("jun"));
 		}
-	}
+	}*/
 	
 	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+		List<Event> events = app.getEventsAttendanceLargerThanFive();
 		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
@@ -98,7 +99,6 @@ public class AppTest {
 			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
 		}
 	}
-
 
 	@Test
 	public void testGetParkSpecialPermitsByAttendance() throws Exception {
@@ -135,13 +135,24 @@ public class AppTest {
 
 	@Test
 	public void testGetAllEventsInMonth()  throws Exception{
-		List <Event> evts = app.getAllEventsInMonth("january");
+		List <Event> evts = app.getAllEventsInMonth("Jan-2014");
+		assertTrue(evts.size() > 0);
 		for(Event e : evts){
-			assertTrue(e.getMonth().toLowerCase().equals("january"));
+			assertTrue(e.getMonth().toLowerCase().equals("jan-2014"));
 		}
 	}
 	
 	@Test
+	public void testGetMarchEvents() throws Exception {
+		List<Event> pubs = app.getAllEventsInMonth("Mar-2014");
+		assertTrue(pubs.size() > 0); // At least one March-2014 event.
+		for(Event temp : pubs) {
+			assertEquals(temp.getMonth(),"Mar-2014");
+		}
+	}
+	
+	@Test
+<<<<<<< HEAD
 	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
 		
@@ -161,6 +172,10 @@ public class AppTest {
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
 		DateTime today = DateTime.now();
+=======
+	public void testTodaysEvents() throws Exception {
+		List<Event> whatToDo = app.getTodaysEvents();
+>>>>>>> group1_master
 		
 		for(Event thingToDo : whatToDo){
 			assertNotNull(thingToDo);
@@ -175,6 +190,7 @@ public class AppTest {
 	}
 	
 	@Test
+<<<<<<< HEAD
 	public void test() throws Exception {
 		List<Event> pubs = app.getMarchEvents2014();
 		assertTrue(pubs.size() > 0); // At least one March-2014 event.
@@ -182,4 +198,19 @@ public class AppTest {
 			assertEquals(temp.getMonth(),"Mar-2014");
 		}
 	}
+=======
+	public void testGetSanFrancisco() throws Exception {
+		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
+		
+		for(Event event : sanFranEvents){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
+	}
+	
+>>>>>>> group1_master
 }

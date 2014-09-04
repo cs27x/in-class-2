@@ -1,7 +1,6 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Calendar;
@@ -68,54 +67,55 @@ public class App {
 		return objectMapper.readValue(new URL(
 				PARK_SPECIAL_PERMITS),
 				eventListType
-				);
+		);
 	}
 
 	
 	public List<Event> getEventsWithLocation(String location) throws Exception {
 		List<Event> evts = getParkSpecialPermits();
-		List<Event> evtsAtLocation = new ArrayList<Event>();
+		List<Event> toDo = new ArrayList<Event>();
 		for (Event evt : evts) {
 			if (evt.getLocation().equals(location)) {
-				evtsAtLocation.add(evt);
+				toDo.add(evt);
 			}
 		}
-		return evtsAtLocation;
+		return toDo;
 	}
 
 
 	public List<Event> getTodaysEvents() throws Exception {
-		List<Event> todaysEvents = new ArrayList<Event>();
+		List<Event> toDo = new ArrayList<Event>();
 		List<Event> events = getParkSpecialPermits();
 		Calendar calendar = Calendar.getInstance();
 	    int year = calendar.get(Calendar.YEAR);
 	    int month = calendar.get(Calendar.MONTH);
 	    int day = calendar.get(Calendar.DATE);
 	    calendar.set(year, month, day, 0, 0, 0);
+	    
 		for (Event evt : events) {
 			if(evt.getDateTime().equals(calendar.getTimeInMillis())){
-				todaysEvents.add(evt);
+				toDo.add(evt);
 			}
 		}
-		return todaysEvents;
+		return toDo;
 	}
-		
-	
-	public List<Event> getMarchEvents2014() throws Exception {
+
+	public List<Event> getMarchEvents2014() throws Exception{
 		List<Event> march_evts = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
-		
-		for (Event evt: evts) {
-			if (evt.getMonth().toLowerCase().equals("mar-2014"))
+		for(Event evt: evts){
+			if (evt.getMonth().toLowerCase().equals("mar-2014")){
 				march_evts.add(evt);
+			}
 		}
 		return march_evts;
-	}	
+	}
 	
 	public Event getFirstEventOfMonth(String month) throws Exception {
 		List<Event> events = getParkSpecialPermits();
 		Event ret = new Event("", "", "", "", "");
 		boolean initial = false;
+		
 		for(Event event: events){
 			if(event.getMonth().equals(month)){
 				if(!initial){
@@ -126,18 +126,14 @@ public class App {
 				DateTime newDate = event.getDateTime();
 				if(ret.getDateTime().isAfter(newDate)){
 					ret = event;
-				} //if
-			} //if 
-		} //for
+				}
+			} 
+		} 
 		return ret;
 	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
-		List<Event> temp;
-		temp = objectMapper.readValue(new URL(
-				PARK_SPECIAL_PERMITS),
-				eventListType
-				);
+		List<Event> temp = getParkSpecialPermits();
 		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
 			Event a = iter.next();
 			if (!a.getMonth().equals(date)){
@@ -148,8 +144,7 @@ public class App {
 	}
 	
 
-	public List<Event> getEventsLargerThan(int i)  throws Exception {
-		// TODO Auto-generated method stub
+	public List<Event> getEventsAttendanceLargerThan(int i)  throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 		
@@ -161,45 +156,26 @@ public class App {
 		}
 		return toDo;
 	}
-		
-	public List<Event> getEventsInJune() throws Exception {
-		List<Event> juneEvents = new ArrayList<Event>();
-		List<Event> events = getParkSpecialPermits();
-		
-		for (Event event : events) {
-			if (event.getMonth().toLowerCase().contains("jun")) {
-				juneEvents.add(event);
-			}
-		}
-		
-		return juneEvents;
+	
+	public List<Event> getEventsAttendanceLargerThanFive() throws Exception {
+		return getEventsAttendanceLargerThan(5);
 	}
+
+	public List<Event> getEventsInJune() throws Exception {
+		return getAllEventsInMonth("Jun-2014");
+	}
+
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
-        List<Event> evts = new ArrayList<Event>();
+        List<Event> toDo = new ArrayList<Event>();
 
         for (Event evt : getParkSpecialPermits()) {
             if (evt.getLocation().toLowerCase().equals("riverfront park")) {
-                evts.add(evt);
+            	toDo.add(evt);
             }
         }
-        return evts;
+        return toDo;
     }
-	
-	public List<Event> AttendanceGreaterThanFive() throws Exception {
-		
-		List<Event> toReturn = new ArrayList<Event>();
-		List<Event> evts = getParkSpecialPermits();
-
-		for (Event evt : evts) {
-			
-			if(Integer.parseInt(evt.getAttendance()) > 5){
-				toReturn.add(evt);
-			}
-		}
-
-		return toReturn;
-	}
 
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> evts = getParkSpecialPermits();
@@ -210,23 +186,21 @@ public class App {
 	}
 	
 	public List<Event> checkLocation(String location) throws Exception {
-		List<Event> atDesiredLocation = new ArrayList<Event>();
+		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
 			if (evt.getLocation().equals(location)) {
-				atDesiredLocation.add(evt);
+				toDo.add(evt);
 			}
 		}
-
-		return atDesiredLocation;
+		return toDo;
 	}
 
 	public List<Event> getAllEventsInMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
