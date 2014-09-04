@@ -65,24 +65,26 @@ public class AppTest {
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
 
-	@Test
-	public void testGetEventsLargerThan() throws Exception {
-		List<Event> events = app.getEventsLargerThan(1000);
-		for (Event event : events)
-			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
-	}
+	
 
 	@Test
 	public void testGetEventsInJune() throws Exception {
-		List<Event> events = app.getEventsInJune();
+		List<Event> events = app.getAllEventsInMonth("June");
 		for(Event event : events) {
 			assertTrue(event.getMonth().toLowerCase().contains("jun"));
 		}
 	}
 	
 	@Test
+	public void testGetEventsLargerThanOneThousand() throws Exception {
+		List<Event> events = app.getEventsLargerThan(1000);
+		for (Event event : events)
+			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
+	}
+	
+	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+		List<Event> events = app.getEventsLargerThan(5);
 		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
@@ -144,9 +146,7 @@ public class AppTest {
 	@Test
 	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		DateTime today = DateTime.now();
-		
+				
 		for(Event event : sanFranEvents){
 			assertNotNull(event);
 			assertNotNull(event.getLocation());
@@ -160,7 +160,6 @@ public class AppTest {
 	@Test
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
-		DateTime today = DateTime.now();
 		
 		for(Event thingToDo : whatToDo){
 			assertNotNull(thingToDo);
@@ -175,8 +174,8 @@ public class AppTest {
 	}
 	
 	@Test
-	public void test() throws Exception {
-		List<Event> pubs = app.getMarchEvents2014();
+	public void testEventsInMarch2014() throws Exception {
+		List<Event> pubs = app.getEventsForMonth("Mar-2014");
 		assertTrue(pubs.size() > 0); // At least one March-2014 event.
 		for(Event temp : pubs) {
 			assertEquals(temp.getMonth(),"Mar-2014");
