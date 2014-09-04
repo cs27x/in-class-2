@@ -150,4 +150,54 @@ public class AppTest {
 			assertTrue(e.getMonth().toLowerCase().equals("january"));
 		}
 	}
+	
+	@Test
+	public void testGetSanFrancisco() throws Exception {
+		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
+		
+		DateTime today = DateTime.now();
+		
+		for(Event event : sanFranEvents){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
+	}
+	
+	@Test
+	public void test() throws Exception {
+		List<Event> pubs = app.getMarchEvents2014();
+		assertTrue(pubs.size() > 0); // At least one March-2014 event.
+		for(Event temp : pubs) {
+			assertEquals(temp.getMonth(),"Mar-2014");
+		}
+	}
+	
+	@Test
+	public void testTodaysEvents() throws Exception {
+		List<Event> whatToDo = app.getTodaysEvents();
+
+		DateTime today = DateTime.now();
+		
+		for(Event thingToDo : whatToDo){
+			assertNotNull(thingToDo);
+			assertNotNull(thingToDo.getDate());
+			
+			try{
+				DateTime eventDate = Event.DATE_TIME_FORMAT.parseDateTime(thingToDo.getDate());
+				assertTrue(eventDate.isEqualNow());
+			} catch(IllegalArgumentException arg) {
+                arg.printStackTrace();
+			}
+		}
+	}
+	
+	@Test
+	public void testZeroEventsIn1945() throws Exception {
+		List<Event> events = app.getEventsForYear("1945");
+		assertTrue(events.size() == 0);
+	}
 }
