@@ -124,7 +124,7 @@ public class AppTest {
     @Test
     public void testCheckLocation() throws Exception {
 
-        List<Event> events = app.checkLocation("East Park");
+        List<Event> events = app.getEventsAtLocation("East Park");
         assertTrue(events.size() > 0);
 
         for(Event event : events){
