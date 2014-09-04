@@ -2,4 +2,9 @@
 /bin/
 
 /.idea/
-/in-class-2.iml
+in-class-2.iml
+
+# Local gradle stuff
+/gradle/
+gradlew
+gradlew.bat
