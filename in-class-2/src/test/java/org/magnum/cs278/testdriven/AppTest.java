@@ -101,7 +101,7 @@ public class AppTest {
 
 
 	@Test
-	public void testGetParkSpecialPermitsByAttendance() throws Exception {
+	public void testSortByAttendance() throws Exception {
 		List<Event> events = app.SortByAttentance();
 		assertTrue(events.size() > 0);
 		boolean sorted = true;
