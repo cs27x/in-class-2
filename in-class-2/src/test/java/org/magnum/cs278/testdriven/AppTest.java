@@ -110,7 +110,7 @@ public class AppTest {
 			if (Double.parseDouble(event.getAttendance()) > last){
 				sorted = false;
 			}
-			else {															// had to add else statement to fix test
+			else {	// had to add else statement to fix test
 				last = Double.parseDouble(event.getAttendance());
 			}
 			assertNotNull(event);
@@ -124,7 +124,6 @@ public class AppTest {
 
     @Test
     public void testCheckLocation() throws Exception {
-
         List<Event> events = app.checkLocation("East Park");
         assertTrue(events.size() > 0);
 
@@ -152,30 +151,8 @@ public class AppTest {
 	}
 	
 	@Test
-<<<<<<< HEAD
-	public void testGetSanFrancisco() throws Exception {
-		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		DateTime today = DateTime.now();
-		
-		for(Event event : sanFranEvents){
-			assertNotNull(event);
-			assertNotNull(event.getLocation());
-			assertNotNull(event.getName());
-			assertNotNull(event.getAttendance());
-			assertNotNull(event.getDate());
-			assertEquals(event.getLocation(), "San Francisco");
-		}
-	}
-	
-	@Test
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
-		DateTime today = DateTime.now();
-=======
-	public void testTodaysEvents() throws Exception {
-		List<Event> whatToDo = app.getTodaysEvents();
->>>>>>> group1_master
 		
 		for(Event thingToDo : whatToDo){
 			assertNotNull(thingToDo);
@@ -190,15 +167,6 @@ public class AppTest {
 	}
 	
 	@Test
-<<<<<<< HEAD
-	public void test() throws Exception {
-		List<Event> pubs = app.getMarchEvents2014();
-		assertTrue(pubs.size() > 0); // At least one March-2014 event.
-		for(Event temp : pubs) {
-			assertEquals(temp.getMonth(),"Mar-2014");
-		}
-	}
-=======
 	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
 		
@@ -211,6 +179,4 @@ public class AppTest {
 			assertEquals(event.getLocation(), "San Francisco");
 		}
 	}
-	
->>>>>>> group1_master
 }
