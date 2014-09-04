@@ -91,20 +91,25 @@ public class App {
         return evts;
     }
 	
-	public List<Event> AttendanceGreaterThanFive() throws Exception {
-		
+    /**
+     * 
+     * @param minAttendance an integer of the minimum attendance needed
+     * @return List<Event> of events that have an attendance of >= minAttendance
+     * @throws Exception
+     */
+    public List<Event> getEventsWithAttendanceAtLeast(int minAttendance) throws Exception {
 		List<Event> toReturn = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
 		for (Event evt : evts) {
 			
-			if(Integer.parseInt(evt.getAttendance()) > 5){
+			if(Integer.parseInt(evt.getAttendance()) > minAttendance){
 				toReturn.add(evt);
 			}
 		}
 
 		return toReturn;
-	}
+    }
 
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
         List<Event> evts = getParkSpecialPermits();

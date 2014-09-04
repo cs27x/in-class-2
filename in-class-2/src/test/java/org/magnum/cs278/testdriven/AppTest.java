@@ -57,7 +57,7 @@ public class AppTest {
 
 	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{
-		List<Event> events = app.AttendanceGreaterThanFive();
+		List<Event> events = app.getEventsWithAttendanceAtLeast(6);
 		
 		for(Event event: events){
 			assertTrue(Integer.parseInt(event.getAttendance()) > 5);
