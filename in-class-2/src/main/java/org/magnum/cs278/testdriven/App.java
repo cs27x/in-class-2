@@ -132,7 +132,7 @@ public class App {
 		return ret;
 	}
 
-	public List<Event> getEventsForMonth(String date) throws Exception {
+	public List<Event> getEventsForMonthInYear(String dateDashYear) throws Exception {
 		List<Event> temp;
 		temp = objectMapper.readValue(new URL(
 				PARK_SPECIAL_PERMITS),
@@ -140,7 +140,7 @@ public class App {
 				);
 		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
 			Event a = iter.next();
-			if (!a.getMonth().equals(date)){
+			if (!a.getMonth().equals(dateDashYear)){
 				iter.remove();
 			}
 		}
@@ -222,7 +222,7 @@ public class App {
 		return atDesiredLocation;
 	}
 
-	public List<Event> getAllEventsInMonth(String month) throws Exception {
+	public List<Event> getEventsInMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 

@@ -60,7 +60,7 @@ public class AppTest {
 	@Test
 	public void testGetEventsForMonth() throws Exception {
 		
-		List<Event> events = app.getEventsForMonth("Jan-2014");
+		List<Event> events = app.getEventsForMonthInYear("Jan-2014");
 		assertTrue(events.size() == 1);
 		assertEquals("Jan-2014", events.get(0).getMonth());
 	}
@@ -134,8 +134,8 @@ public class AppTest {
     }
 
 	@Test
-	public void testGetAllEventsInMonth()  throws Exception{
-		List <Event> evts = app.getAllEventsInMonth("january");
+	public void testGetEventsInMonth()  throws Exception{
+		List <Event> evts = app.getEventsInMonth("january");
 		for(Event e : evts){
 			assertTrue(e.getMonth().toLowerCase().equals("january"));
 		}
