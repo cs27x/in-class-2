@@ -15,7 +15,6 @@ public class EventTodayTest {
 	@Test
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
-		DateTime today = DateTime.now();
 		
 		for(Event thingToDo : whatToDo){
 			assertNotNull(thingToDo);
