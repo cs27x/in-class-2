@@ -147,7 +147,12 @@ public class App {
 	}
 	
 
+<<<<<<< HEAD
 	public List<Event> getEventsAttendanceLargerThan(int i)  throws Exception {
+=======
+	public List<Event> getEventsLargerThan(int i)  throws Exception {
+		// TODO Auto-generated method stub
+>>>>>>> 81fcb98c4ff69cfc433a8167c993578f1effaa84
 		List<Event> returnEvents = new ArrayList<Event>();
 		List<Event> eventList = getParkSpecialPermits();
 		
@@ -158,6 +163,7 @@ public class App {
 			}
 		}
 		return returnEvents;
+<<<<<<< HEAD
 	}
 	
 	public List<Event> getEventsAttendanceLargerThanFive() throws Exception {
@@ -166,6 +172,21 @@ public class App {
 		
 	public List<Event> getEventsInJune() throws Exception {
 		return getAllEventsInMonth("jun");
+=======
+	}
+		
+	public List<Event> getEventsInJune() throws Exception {
+		List<Event> juneEvents = new ArrayList<Event>();
+		List<Event> eventList = getParkSpecialPermits();
+		
+		for (Event event : eventList) {
+			if (event.getMonth().contains("jun")) {
+				juneEvents.add(event);
+			}
+		}
+		
+		return juneEvents;
+>>>>>>> 81fcb98c4ff69cfc433a8167c993578f1effaa84
 	}
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
@@ -178,6 +199,24 @@ public class App {
         }
         return eventList;
     }
+<<<<<<< HEAD
+=======
+	
+	public List<Event> AttendanceGreaterThanFive() throws Exception {
+		
+		List<Event> toReturn = new ArrayList<Event>();
+		List<Event> eventList = getParkSpecialPermits();
+
+		for (Event evt : eventList) {
+			
+			if(Integer.parseInt(evt.getAttendance()) > 5){
+				toReturn.add(evt);
+			}
+		}
+
+		return toReturn;
+	}
+>>>>>>> 81fcb98c4ff69cfc433a8167c993578f1effaa84
 
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> eventList = getParkSpecialPermits();
