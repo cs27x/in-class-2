@@ -72,14 +72,14 @@ public class AppTest {
 			assertTrue(Integer.parseInt(event.getAttendance()) > 1000);
 	}
 
-	@Test
+	/*@Test
 	public void testGetEventsInJune() throws Exception {
 		List<Event> events = app.getEventsInJune();
 		assertTrue(events.size() >0);
 		for(Event event : events) {
 			assertTrue(event.getMonth().toLowerCase().contains("jun"));
 		}
-	}
+	}*/
 	
 	@Test
 	public void testAttendanceGreaterThanFive() throws Exception{

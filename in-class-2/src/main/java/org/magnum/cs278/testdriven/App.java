@@ -99,9 +99,19 @@ public class App {
 		return todaysEvents;
 	}
 		
+
 	public List<Event> getMarchEvents2014() throws Exception{
-		return getAllEventsInMonth("Mar-2014");
+		List<Event> march_evts = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
+		
+		for(Event evt: evts){
+			if(evt.getMonth().equals("Mar-2014")){
+				march_evts.add(evt);
+			}
+		}
+		return march_evts;
 	}
+
 	
 	public Event getFirstEventOfMonth(String month) throws Exception {
 		List<Event> events = getParkSpecialPermits();
@@ -149,11 +159,14 @@ public class App {
 		return toDo;
 	}
 		
+<<<<<<< HEAD
 
 	public List<Event> getEventsInJune() throws Exception {
 		return getAllEventsInMonth("Jun-2014");
 	}
 
+=======
+>>>>>>> f7d0df6ff374a3e4fcb7010e68a9aa6fe133d578
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
         List<Event> evts = new ArrayList<Event>();
