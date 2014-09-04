@@ -147,8 +147,7 @@ public class App {
 	}
 	
 
-	public List<Event> getEventsLargerThan(int i)  throws Exception {
-		// TODO Auto-generated method stub
+	public List<Event> getEventsAttendanceLargerThan(int i)  throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 		
@@ -159,6 +158,10 @@ public class App {
 			}
 		}
 		return toDo;
+	}
+	
+	public List<Event> getEventsAttendanceLargerThanFive() throws Exception {
+		return getEventsAttendanceLargerThan(5);
 	}
 		
 	public List<Event> getEventsInJune() throws Exception {
@@ -175,20 +178,6 @@ public class App {
         }
         return evts;
     }
-	
-	public List<Event> AttendanceGreaterThanNumber(int n) throws Exception {
-		
-		List<Event> toReturn = new ArrayList<Event>();
-		List<Event> evts = getParkSpecialPermits();
-
-		for (Event evt : evts) {
-			if(Integer.parseInt(evt.getAttendance()) > n){
-				toReturn.add(evt);
-			}
-		}
-
-		return toReturn;
-	}
 
 	public List<Event> getParkSpecialPermitsByAttendance() throws Exception {
 		List<Event> evts = getParkSpecialPermits();
