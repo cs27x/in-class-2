@@ -80,17 +80,6 @@ public class App {
 		return juneEvents;
 	}
 	
-    public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
-        List<Event> evts = new ArrayList<Event>();
-
-        for (Event evt : getParkSpecialPermits()) {
-            if (evt.getLocation().toLowerCase().equals("riverfront park")) {
-                evts.add(evt);
-            }
-        }
-        return evts;
-    }
-	
 	public List<Event> AttendanceGreaterThanFive() throws Exception {
 		
 		List<Event> toReturn = new ArrayList<Event>();
@@ -142,17 +131,6 @@ public class App {
 		return march_evts;
 	}
 	
-	public List<Event> getEventsWithLocation(String location) throws Exception {
-		List<Event> evts = getParkSpecialPermits();
-		List<Event> evtsAtLocation = new ArrayList<Event>();
-		for (Event evt : evts) {
-			if (evt.getLocation().equals(location)) {
-				evtsAtLocation.add(evt);
-			}
-		}
-		return evtsAtLocation;
-	}
-	
 	public List<Event> getTodaysEvents() throws Exception {
 		List<Event> todaysEvents = new ArrayList<Event>();
 		List<Event> events = getParkSpecialPermits();
@@ -201,7 +179,8 @@ public class App {
 
 		return atDesiredLocation;
 	}
-
+	
+	
 	public List<Event> getEventsForMonth(String date) throws Exception {
 		List<Event> temp;
 		temp = objectMapper.readValue(new URL(

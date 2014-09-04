@@ -64,16 +64,6 @@ public class AppTest {
 		}
 	}
 
-	//list of Riverfront park special permits
-	@Test
-	public void testLocationNashville() throws Exception {
-		List<Event> events = app.getRiverfrontParkSpecialPermits();
-        assertTrue(events.size() > 0);
-		for(Event event : events) {
-			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
-		}
-	}
-
     @Test
 	public void testGetFirstEventOfMonth() throws Exception {
 		String month = "Feb-2014";
@@ -105,17 +95,7 @@ public class AppTest {
 		}
 		assertTrue(sorted);
 	}
-
-    @Test
-    public void testCheckLocation() throws Exception {
-
-        List<Event> events = app.checkLocation("East Park");
-        assertTrue(events.size() > 0);
-
-        for(Event event : events){
-            assertTrue(event.getLocation().equals("East Park"));
-        }
-    }
+    
 
     @Test
     public void testForLocation() throws Exception {
@@ -126,6 +106,26 @@ public class AppTest {
         for(Event event : events){
             assertTrue(event.getLocation().equals("East Park"));
         }
+        
+		events = app.checkLocation("Riverfront Park");
+        assertTrue(events.size() > 0);
+        
+		for(Event event : events) {
+			assertTrue(event.getLocation().equals("Riverfront Park"));
+		}
+		
+		events = app.checkLocation("San Francisco");
+		
+		DateTime today = DateTime.now();
+		
+		for(Event event : events){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
     }
 
 	@Test
