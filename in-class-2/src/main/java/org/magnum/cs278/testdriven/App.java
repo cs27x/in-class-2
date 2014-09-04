@@ -1,14 +1,11 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
-
 import java.util.Collections;
-
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -113,23 +110,8 @@ public class App {
 	}	
 	
 	public Event getFirstEventOfMonth(String month) throws Exception {
-		List<Event> events = getParkSpecialPermits();
-		Event ret = new Event("", "", "", "", "");
-		boolean initial = false;
-		for(Event event: events){
-			if(event.getMonth().equals(month)){
-				if(!initial){
-					ret = event;
-					initial = true;
-					continue;
-				}
-				DateTime newDate = event.getDateTime();
-				if(ret.getDateTime().isAfter(newDate)){
-					ret = event;
-				} //if
-			} //if 
-		} //for
-		return ret;
+		List<Event> events = getEventsForMonth(month);		
+		return events.get(0);
 	}
 
 	public List<Event> getEventsForMonth(String date) throws Exception {
