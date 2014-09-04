@@ -101,15 +101,17 @@ public class App {
 	}
 		
 	
-	public List<Event> getMarchEvents2014() throws Exception {
-		List<Event> march_evts = new ArrayList<Event>();
-		List<Event> evts = getParkSpecialPermits();
+	public List<Event> getEventsForMonthAndYear(String month, String year) throws Exception {
+		List<Event> monthEvents = getEventsForMonth(month);
+		List<Event> yearAndMonthEvents = new ArrayList<Event>();
 		
-		for (Event evt: evts) {
-			if (evt.getMonth().equals("Mar-2014"))
-				march_evts.add(evt);
+		for (Event evnt : monthEvents) {
+			if (evnt.getMonth().contains(year)) {
+				yearAndMonthEvents.add(evnt);
+			}
 		}
-		return march_evts;
+		
+		return yearAndMonthEvents;
 	}	
 	
 	public Event getFirstEventOfMonth(String month) throws Exception {
@@ -132,22 +134,6 @@ public class App {
 		return ret;
 	}
 
-	public List<Event> getEventsForMonth(String date) throws Exception {
-		List<Event> temp;
-		temp = objectMapper.readValue(new URL(
-				PARK_SPECIAL_PERMITS),
-				eventListType
-				);
-		for(Iterator<Event> iter = temp.listIterator(); iter.hasNext();){
-			Event a = iter.next();
-			if (!a.getMonth().equals(date)){
-				iter.remove();
-			}
-		}
-		return temp;
-	}
-	
-
 	public List<Event> getEventsLargerThan(int i)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Event> toDo = new ArrayList<Event>();
@@ -160,19 +146,6 @@ public class App {
 			}
 		}
 		return toDo;
-	}
-		
-	public List<Event> getEventsInJune() throws Exception {
-		List<Event> juneEvents = new ArrayList<Event>();
-		List<Event> events = getParkSpecialPermits();
-		
-		for (Event event : events) {
-			if (event.getMonth().contains("jun")) {
-				juneEvents.add(event);
-			}
-		}
-		
-		return juneEvents;
 	}
 	
     public List<Event> getRiverfrontParkSpecialPermits() throws Exception {
@@ -222,16 +195,17 @@ public class App {
 		return atDesiredLocation;
 	}
 
-	public List<Event> getAllEventsInMonth(String month) throws Exception {
+	public List<Event> getEventsForMonth(String month) throws Exception {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
-			if (evt.getMonth().equalsIgnoreCase(month) ) {
+			System.out.println(evt.getMonth());
+			if (evt.getMonth().toLowerCase().contains(month) ) {
 				toDo.add(evt);
 			}
 		}
+		
 		return toDo;
 	}
 }
