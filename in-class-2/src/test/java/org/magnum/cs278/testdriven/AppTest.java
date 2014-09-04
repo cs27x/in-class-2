@@ -144,9 +144,7 @@ public class AppTest {
 	@Test
 	public void testGetSanFrancisco() throws Exception {
 		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		DateTime today = DateTime.now();
-		
+				
 		for(Event event : sanFranEvents){
 			assertNotNull(event);
 			assertNotNull(event.getLocation());
@@ -160,7 +158,6 @@ public class AppTest {
 	@Test
 	public void testTodaysEvents() throws Exception {
 		List<Event> whatToDo = app.getTodaysEvents();
-		DateTime today = DateTime.now();
 		
 		for(Event thingToDo : whatToDo){
 			assertNotNull(thingToDo);

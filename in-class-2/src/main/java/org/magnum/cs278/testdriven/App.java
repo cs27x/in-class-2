@@ -1,7 +1,6 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.Calendar;
@@ -226,7 +225,6 @@ public class App {
 		List<Event> toDo = new ArrayList<Event>();
 		List<Event> evts = getParkSpecialPermits();
 
-		DateTime now = DateTime.now();
 		for (Event evt : evts) {
 			if (evt.getMonth().equalsIgnoreCase(month) ) {
 				toDo.add(evt);
