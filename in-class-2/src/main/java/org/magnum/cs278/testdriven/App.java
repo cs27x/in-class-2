@@ -1,10 +1,10 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.joda.time.DateTime;
 
@@ -55,13 +55,8 @@ public class App {
 
 	// filters all events by a boolean lambda expression
 	public List<Event> filter(filterLambda lambda) throws Exception {
-		List<Event> retList = new ArrayList<Event>();
-		for (Event evt : getParkSpecialPermits()) {
-			if (lambda.op(evt)){
-				retList.add(evt);
-			}
-		}
-		return retList;
+		return getParkSpecialPermits().stream().filter(evt -> lambda.op(evt)).collect(Collectors.toList());
+
 	}
 
 	public List<Event> getThreeThingsToDo() throws Exception {
