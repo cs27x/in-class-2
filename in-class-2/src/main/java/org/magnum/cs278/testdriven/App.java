@@ -34,7 +34,6 @@ public class App {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-
 		App app = new App();
 		List<Event> eventList = app.getParkSpecialPermits();
 		for (Event e : eventList) {
@@ -72,8 +71,8 @@ public class App {
 
 	public List<Event> getTodaysEvents() throws Exception {
 		Calendar calendar = Calendar.getInstance();
-	    calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
-	    return filter((evt) -> evt.getDateTime().equals(calendar.getTimeInMillis()));
+		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
+		return filter((evt) -> evt.getDateTime().equals(calendar.getTimeInMillis()));
 	}
 
 	public List<Event> getMarchEvents2014() throws Exception{
@@ -102,9 +101,9 @@ public class App {
 		return getAllEventsInMonth("Jun-2014");
 	}
 	
-    public List<Event> getRiverfrontEvents() throws Exception {
-    	return filter((evt) -> evt.getLocation().equalsIgnoreCase("riverfront park"));
-    }
+	public List<Event> getRiverfrontEvents() throws Exception {
+		return filter((evt) -> evt.getLocation().equalsIgnoreCase("riverfront park"));
+	}
 
 	public List<Event> getEventsByAttendance() throws Exception {
 		List<Event> eventList = getParkSpecialPermits();
