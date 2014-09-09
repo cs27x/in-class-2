@@ -20,7 +20,7 @@ public class AppTest {
 	 */
 	@Test
 	public void testGetThreeThingsToDo() throws Exception {
-		List<Event> whatToDo = app.getThreeThingsToDo();
+		List<Event> whatToDo = app.getThingsToDo(3);
 		assertEquals(3, whatToDo.size());
 		
 		DateTime today = DateTime.now();

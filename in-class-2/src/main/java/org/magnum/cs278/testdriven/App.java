@@ -1,10 +1,14 @@
 package org.magnum.cs278.testdriven;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Iterator;
+
 import java.util.Collections;
+
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -43,28 +47,22 @@ public class App {
         }
     }
 
-    /**
-     * Calculates a list of popular events going on in Nashville
-     *
-     * @return the list of events
-     * @throws Exception
-     */
-    public List<Event> getThreeThingsToDo() throws Exception {
-        List<Event> toDo = new ArrayList<>();
-        List<Event> evts = getParkSpecialPermits();
+	public List<Event> getThingsToDo(int numberOfThings) throws Exception {
+		List<Event> toDo = new ArrayList<Event>();
+		List<Event> evts = getParkSpecialPermits();
 
-        DateTime now = DateTime.now();
-        for (Event evt : evts) {
-            if (evt.getDateTime().isAfter(now)) {
-                toDo.add(evt);
-                if (toDo.size() >= 3) {
-                    break;
-                }
-            }
-        }
+		DateTime now = DateTime.now();
+		for (Event evt : evts) {
+			if (evt.getDateTime().isAfter(now)) {
+				toDo.add(evt);
+				if (toDo.size() >= numberOfThings) {
+					break;
+				}
+			}
+		}
 
-        return toDo;
-    }
+		return toDo;
+	}
 
     /**
      * Gets all the events going on in Nashville from the Nashville API
