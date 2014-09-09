@@ -16,6 +16,12 @@ class EventAttendanceComparator implements Comparator<Event> {
     }
 }
 
+class EventDateComparator implements Comparator<Event> {
+    public int compare(Event e1, Event e2) {
+        return e1.getDateTime().compareTo(e2.getDateTime());
+    }
+}
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Event {
 	
