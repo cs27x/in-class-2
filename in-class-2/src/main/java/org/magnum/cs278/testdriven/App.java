@@ -230,7 +230,12 @@ public class App {
 		return todaysEvents;
 	}
 		
-
+	/**
+	 * Get the first event of the month
+	 * @param month
+	 * @return Gets the first event in the month or an empty event if none exists
+	 * @throws Exception
+	 */
     public Event getFirstEventOfMonth(String month) throws Exception {
         List<Event> events = getParkSpecialPermits();
         Event ret = new Event("", "", "", "", "");
@@ -249,19 +254,6 @@ public class App {
             } //if
         } //for
         return ret;
-    }
-
-    public List<Event> checkLocation(String location) throws Exception {
-        List<Event> atDesiredLocation = new ArrayList<>();
-        List<Event> evts = getParkSpecialPermits();
-
-        for (Event evt : evts) {
-            if (evt.getLocation().equals(location)) {
-                atDesiredLocation.add(evt);
-            }
-        }
-
-        return atDesiredLocation;
     }
 
     /**
@@ -284,6 +276,12 @@ public class App {
 		return toDo;
 	}
 
+	/**
+	 * Get the events happening in the month
+	 * @param month
+	 * @return an array list of Event type with events happening in month
+	 * @throws Exception
+	 */
     public List<Event> getAllEventsInMonth(String month) throws Exception {
         List<Event> toDo = new ArrayList<>();
         List<Event> evts = getParkSpecialPermits();

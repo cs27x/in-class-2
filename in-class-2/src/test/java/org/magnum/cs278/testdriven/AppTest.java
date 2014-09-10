@@ -84,20 +84,6 @@ public class AppTest {
 	}
 
 	/**
-	 * Tests getRiverfrontParkSpecialPermits by checking that the location 
-	 * is in some part of Nashville, specifically "riverfront park".
-	 * @throws Exception
-	 */
-	@Test
-	public void testLocationNashville() throws Exception {
-		List<Event> events = app.getRiverfrontParkSpecialPermits();
-        assertTrue(events.size() > 0);
-		for(Event event : events) {
-			assertTrue(event.getLocation().toLowerCase().equals("riverfront park"));
-		}
-	}
-
-	/**
 	 * Tests getFirstEventOfMonth using a known month and event name.
 	 * @throws Exception
 	 */
@@ -139,22 +125,6 @@ public class AppTest {
 	}
 
     /**
-     * Tests checkLocation by checking for positive list size and checking if 
-     * all the events in the list match the location they checked for. 
-     * @throws Exception
-     */
-    @Test
-    public void testCheckLocation() throws Exception {
-
-        List<Event> events = app.getEventsWithLocation("East Park");
-        assertTrue(events.size() > 0);
-
-        for(Event event : events){
-            assertTrue(event.getLocation().equals("East Park"));
-        }
-    }
-
-    /**
      * Tests getEventsForMonth by checking that there is only one Month-2014
      * element in the list and checking that the tested month is actually the month
      * in all the events in the list.
@@ -194,23 +164,7 @@ public class AppTest {
 	}
 	
 	@Test
-	public void testGetSanFrancisco() throws Exception {
-		List<Event> sanFranEvents = app.getEventsWithLocation("San Francisco");
-		
-		DateTime today = DateTime.now();
-		
-		for(Event event : sanFranEvents){
-			assertNotNull(event);
-			assertNotNull(event.getLocation());
-			assertNotNull(event.getName());
-			assertNotNull(event.getAttendance());
-			assertNotNull(event.getDate());
-			assertEquals(event.getLocation(), "San Francisco");
-		}
-	}
-	
-	@Test
-	public void test() throws Exception {
+	public void testEventsInMarch() throws Exception {
 		List<Event> pubs = app.getMarchEvents2014();
 		assertTrue(pubs.size() > 0); // At least one March-2014 event.
 		for(Event temp : pubs) {
@@ -251,4 +205,42 @@ public class AppTest {
 			assertEquals(temp.getMonth(),"Mar-2014");
 		}
 	}
+	
+	/**
+	 * This is a test function for all the location type testing in the app
+	 * It merges the other types. Currently tests for "East Park," "Riverfront
+	 * Park," and "San Francisco."  For one of the events, San Francisco, it does 
+	 * more indepth checking to make sure the data structure returned is correct.
+	 * @throws Exception
+	 */
+	@Test
+    public void testForLocation() throws Exception {
+
+        List<Event> events = app.getEventsWithLocation("East Park");
+        assertTrue(events.size() > 0);
+
+        for(Event event : events){
+            assertTrue(event.getLocation().equals("East Park"));
+        }
+        
+		events = app.getEventsWithLocation("Riverfront Park");
+        assertTrue(events.size() > 0);
+        
+		for(Event event : events) {
+			assertTrue(event.getLocation().equals("Riverfront Park"));
+		}
+		
+		events = app.getEventsWithLocation("San Francisco");
+		
+		DateTime today = DateTime.now();
+		
+		for(Event event : events){
+			assertNotNull(event);
+			assertNotNull(event.getLocation());
+			assertNotNull(event.getName());
+			assertNotNull(event.getAttendance());
+			assertNotNull(event.getDate());
+			assertEquals(event.getLocation(), "San Francisco");
+		}
+    }
 }
